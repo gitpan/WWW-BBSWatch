@@ -1,3 +1,7 @@
+Version 1.00
+
+9/22/00 - Fixed spelling errors in the POD.
+
 Version 0.02
 
 4/22/00 - Fixed bad reference to $self->addr in _mail_error().

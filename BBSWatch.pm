@@ -4,7 +4,7 @@ package WWW::BBSWatch;
 
 =head1 NAME
 
-WWW::BBSWatch - Send via email messages posted to a WWW bulletin board
+WWW::BBSWatch - Send, via email, messages posted to a WWW bulletin board
 
 =head1 SYNOPSIS
 
@@ -43,7 +43,7 @@ This module requires B<LWP::UserAgent> and B<MIME::Lite>.
 use strict;
 
 use vars qw/$VERSION/;
-$VERSION = "0.02";
+$VERSION = "1.00";
 
 use LWP::UserAgent ();
 use SDBM_File;
@@ -100,7 +100,7 @@ sub new {
     db              => $args{-DB} || 'BBSWatch',
     bbs_url         => $args{-BBS_URL},
     max_articles    => $args{-MAX_ARTICLES} || 999999999,
-    verbose         => $args{-VERBOSITY} || 0,
+    verbose         => $args{-VERBOSE} || 0,
   };
 
   die "Must supply -BBS_URL" unless $self->{bbs_url};
@@ -365,7 +365,7 @@ having to use B<HTML::Parser> or B<HTML::TreeBuilder>.
   package TheOakBBSWatch;
 
   # To watch multiple bulletin boards using the same engine requires
-  # defining only one subclass of WWW::BBSWatch since the bulleting board
+  # defining only one subclass of WWW::BBSWatch since the bulletin board
   # engine will generate the various boards in the same general format
 
   use vars qw/@ISA/;
