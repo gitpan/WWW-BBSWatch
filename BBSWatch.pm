@@ -43,7 +43,7 @@ This module requires B<LWP::UserAgent> and B<MIME::Lite>.
 use strict;
 
 use vars qw/$VERSION/;
-$VERSION = "1.01";
+$VERSION = "1.02";
 
 use LWP::UserAgent ();
 use SDBM_File;
@@ -67,6 +67,10 @@ C<-BBS_URL>: The URL of the bulletin board's index page. This field is
 required.
 
 C<-MAIL>: The email address to send mail to
+
+C<-MDA>: Sets the mail delivery agent by calling MIME::Lite::send(HOW, HOWARGS).
+If a scalar value is passed in, it is passed as send("sendmail", $mda_value). If
+an array ref is provided, send(@$mda_value) is called.
 
 C<-DB>: Basename of the database that keeps track of visited articles
 
@@ -94,6 +98,15 @@ sub new {
       delete $args{$_};
     }
   }
+
+  if ($args{-MDA}) {
+    if (ref $args{-MDA}) {
+      MIME::Lite::send(@{$args{-MDA}});
+    } else {
+      MIME::Lite::send("sendmail", $args{-MDA});
+    }
+  }
+
   my $self = {
     addr            => $args{-MAIL},
     warn_timeout    => $args{-WARN_TIMEOUT} || (3600 * 3),
@@ -127,7 +140,7 @@ correctly.
 
 =cut
 
-# In hindsight this is embarrassingly monolithic. From an OO viewpoint anyway.
+# In hindsight this is embarrassingly monolithic.
 sub retrieve {
   my $self = shift;
   my $catchup = shift || 0;
@@ -479,13 +492,15 @@ bit.
 =head1 AUTHOR
 
  This module was written by
- Tim Ayers (http://search.cpan.org/search?mode=author&query=tayers).
+ Tim Ayers (http://search.cpan.org/search?author=TAYERS).
 
 =head1 COPYRIGHT
 
-Copyright (c) 2000 Tim R. Ayers.
+Copyright (c) 2000, 2001 Tim R. Ayers. All rights reserved. 
 
-All rights reserved. This program is free software; you can redistribute it
+=head1 LICENSE
+
+This program is free software; you can redistribute it
 and/or modify it under the same terms as Perl itself.
 
 =cut
