@@ -1,0 +1,6 @@
+Version 0.02
+
+4/22/00 - Fixed bad reference to $self->addr in _mail_error().
+
+4/29/00 - Fixed spelling error of 'httpproxy' in README.
+*****************************************************************************

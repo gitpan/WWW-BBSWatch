@@ -43,7 +43,7 @@ This module requires B<LWP::UserAgent> and B<MIME::Lite>.
 use strict;
 
 use vars qw/$VERSION/;
-$VERSION = "0.01";
+$VERSION = "0.02";
 
 use LWP::UserAgent ();
 use SDBM_File;
@@ -289,7 +289,7 @@ sub _mail_error {
   my $self = shift;
   my @data = @_;
 
-  if ($self->addr) {
+  if ($self->{addr}) {
     MIME::Lite->new(To=>$self->{addr}, Subject=>'BBSWatch Error!',
                     Type=>'TEXT', Data=>join('', @data))->send;
   }

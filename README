@@ -23,7 +23,7 @@ This is a simple module. The typical installation routine should work fine.
 PROBLEMS
 --------
 If the test fails, the most likely reason is that you access the internet
-thru a firewall. Set the environment variable 'httpproxy' to your
+thru a firewall. Set the environment variable 'http_proxy' to your
 firewall. For example for sh/ksh/bash
   export http_proxy=http://httpproxy:411
 or in csh
