@@ -43,7 +43,7 @@ This module requires B<LWP::UserAgent> and B<MIME::Lite>.
 use strict;
 
 use vars qw/$VERSION/;
-$VERSION = "1.00";
+$VERSION = "1.01";
 
 use LWP::UserAgent ();
 use SDBM_File;
@@ -476,9 +476,14 @@ having to use B<HTML::Parser> or B<HTML::TreeBuilder>.
 L<perlre>. At least a passing knowledge of regular expressions helps quite a
 bit.
 
+=head1 AUTHOR
+
+ This module was written by
+ Tim Ayers (http://search.cpan.org/search?mode=author&query=tayers).
+
 =head1 COPYRIGHT
 
-  Copyright (c) 2000 Tim R. Ayers. 
+Copyright (c) 2000 Tim R. Ayers.
 
 All rights reserved. This program is free software; you can redistribute it
 and/or modify it under the same terms as Perl itself.
